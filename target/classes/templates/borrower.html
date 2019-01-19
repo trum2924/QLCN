@@ -1,0 +1,50 @@
+<div xmlns:th="http://www.thymeleaf.org" style="width: 35%">
+	<a th:href="@{/borrower/borrowerList/0}">Tạo mới</a>
+	<form th:if="${borrowerDTO}" th:action="@{/borrower/saveBorrower}" th:object="${borrowerDTO}" method="POST">
+		<h2>CMND/Thẻ Căn Cước</h2>
+		<table>
+			<tr>
+				<td>Mã</td>
+				<td><input type="text" th:field="*{cardNum}" required pattern="\d{9}|\d{12}" title="9 hoặc 12 số"></td>
+			</tr>
+			<tr>
+				<td>Họ tên</td>
+				<td><input type="text" th:field="*{name}" required maxlength="40"></td>
+			</tr>
+			<tr>
+				<td>Ngày sinh</td>
+				<td><input type="date" th:field="*{birthday}" required></td>
+			</tr>
+			<tr>
+				<td>Quê quán</td>
+				<td><input type="text" th:field="*{cardAddress}" required maxlength="100"></td>
+			</tr>
+			<tr>
+				<td>Ngày cấp</td>
+				<td><input type="date" th:field="*{issueDate}" required></td>
+			</tr>
+		</table>
+		<h2>Cá Nhân</h2>
+		<table>
+			<tr>
+				<td>Địa chỉ</td>
+				<td><input type="text" th:field="*{currentAddress}" required maxlength="100"></td>
+			</tr>
+			<tr>
+				<td>Di động</td>
+				<td><input type="text" th:field="*{phone}" required pattern="^0\d{9}"></td>
+			</tr>
+			<tr>
+				<td>Ghi chú</td>
+				<td><textarea rows="3" th:field="*{note}" maxlength="200"></textarea></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Lưu"></td>
+			</tr>
+		</table>
+		<input type="hidden" th:field="*{id}">
+	</form>
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+</div>
+

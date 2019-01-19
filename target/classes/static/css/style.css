@@ -1,0 +1,18 @@
+table {
+	border-collapse: collapse
+}
+
+td {
+	word-wrap: break-word
+}
+
+div {
+	box-sizing: border-box;
+	overflow-x: auto;
+	float: left
+}
+
+.list th, .list td {
+	border: 1px solid black
+}
+

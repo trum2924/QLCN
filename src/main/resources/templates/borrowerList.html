@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>BUDGET</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+	<th:block th:include="/_menu"></th:block>
+	<!-- <a th:href="@{/borrower/addBorrower}">Tạo mới</a> -->
+	<div style="width: 65%">
+		<h2>Danh Sách Người Vay</h2>
+		<table class="list">
+			<tr>
+				<th></th>
+				<th>CMND</th>
+				<th>Họ tên</th>
+				<th>Di động</th>	
+			</tr>
+			<tr th:each="borrower,iter : ${borrowers}">
+				<td th:text="${iter.count}"></td>
+				<td th:text="${borrower.cardNum}"></td>
+				<td><a th:text="${borrower.name}" th:href="@{|/borrower/borrowerList/${borrower.id}|}"></a></td>
+				<td th:text="${borrower.phone}"></td>
+			</tr>
+		</table>
+	</div>
+	<th:block th:include="/borrower"></th:block>
+</body>
+</html>

@@ -1,0 +1,1 @@
+INSERT INTO `budget`.`lender` (`username`, `password`, `is_enabled`) VALUES ('user1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);

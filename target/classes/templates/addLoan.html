@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>BUDGET</title>
+</head>
+<body>
+	<th:block th:include="/_menu"></th:block>
+	<h2>Thêm Khoản Vay</h2>
+	<form th:action="@{/loan/saveLoan}" th:object="${loanDTO}" method="POST">
+		<table>
+			<tr>
+				<td>Người vay</td>
+				<td>
+					<select th:field="*{borrowerid}">
+						<option th:each="borrower : ${borrowers}"
+								th:value="${borrower.id}"
+								th:utext="${borrower.name}"/>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Ngày vay</td>
+				<td><input type="date" th:field="*{issueDate}"></td>
+			</tr>
+			<tr>
+				<td>Số tiền</td>
+				<td><input type="number" th:field="*{amount}" required min="1000" max="4294967295">,000 Đồng</td>
+			</tr>
+			<tr>
+				<td>Lãi suất</td>
+				<td><input type="number" th:field="*{rate}" required min="0" max="100"> %</td>
+			</tr>
+			<tr>
+				<td>Ghi chú</td>
+				<td><textarea rows="3" th:field="*{note}" maxlength="200"></textarea></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Lưu"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>BUDGET</title>
+</head>
+<body>
+	<h1>ĐĂNG NHẬP</h1>
+	<form th:action="@{/security_check}" method="POST">
+		<input type="text" name="username" placeholder="Tên đăng nhập" required maxlength="30" value="user1"> <br>
+		<input type="password" name="password" placeholder="Mật khẩu" required maxlength="30" value="123"> <br>
+		<input type="submit" name="submit" value="Đăng nhập">
+	</form>
+	<span th:if="${#request.getParameter('error')=='true'}">Tên đăng nhập hoặc mật khẩu không đúng</span>
+</body>
+</html>

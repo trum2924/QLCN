@@ -1,0 +1,33 @@
+<div xmlns:th="http://www.thymeleaf.org" style="width: 35%">
+	<form th:if="${editLoanForm}" th:action="@{/loan/editLoan}" th:object="${editLoanForm}" method="POST">
+		<h2>Thay Đổi</h2>
+		<table>
+			<tr>
+				<td>Số tiền</td>
+				<td><input type="number" th:field="*{amount}" required min="0" max="4294967295">,000 Đồng</td>
+			</tr>
+			<tr>
+				<td>Ghi chú</td>
+				<td><textarea rows="3" th:field="*{note}" maxlength="200"></textarea></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Lưu"></td>
+			</tr>
+		</table>
+		<input type="hidden" th:field="*{id}">
+	</form>
+	
+	<table th:if="${loanLogs}" class="list">
+		<h2>Lịch Sử</h2>
+		<tr>
+			<th>Ngày</th>
+			<th>Số tiền (Nghìn Đồng)</th>
+		</tr>
+		<tr th:each="loanLog : ${loanLogs}">
+			<td th:text="${loanLog.date}"></td>
+			<td th:text="${loanLog.amount}"></td>
+		</tr>
+	</table>
+</div>
+

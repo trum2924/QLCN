@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>LoanList</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+	<th:block th:include="/_menu"></th:block>
+	
+	<div style="width: 65%">
+		<h2>Danh Sách Khoản Vay</h2>
+		<a th:href="@{/loan/addLoanPage}">Tạo mới</a>
+		<br><br>
+		<table th:if="${loans}" class="list">
+			<tr>
+				<th></th>
+				<th>Họ tên</th>
+				<th>Ngày vay</th>
+				<th>Số tiền (Nghìn Đồng)</th>
+				<th>lãi suất (%)</th>	
+			</tr>
+			<tr th:each="loan,iter : ${loans}">
+				<td th:text="${iter.count}"></td>
+				<td><a th:text="${loan.borrowerName}" th:href="@{|/borrower/borrowerList/${loan.borrowerid}|}"></a></td>
+				<td th:text="${loan.issueDate}"></td>
+				<td><a th:text="${loan.amount}" th:href="@{|/loan/loanList/${loan.id}|}"></a></td>
+				<td th:text="${loan.rate}"></td>
+			</tr>
+		</table>
+	</div>
+	<th:block th:include="/loanLog"></th:block>
+</body>
+</html>
